@@ -10,7 +10,7 @@
 //******************************************************************************
 //die mit "//*" gekennzeichneten Zeilen nicht verändern!
 
-#define WIFIHOSTNAME "WORTUHR"                 // Das ist der default Hostname/Systemname. Der eigentliche Systemname wird in Settings eingestellt.
+#define WIFIHOSTNAME "wordclock"                 // Das ist der default Hostname/Systemname. Der eigentliche Systemname wird in Settings eingestellt.
 #define WIFI_SETUP_TIMEOUT 300                 // So lange ist der AP (AccessPoint) zum eingeben der WiFi Parameter an
 #define WIFI_AP_PASS "12345678"                // Wifi Pass für den AP
 #define OTA_PASS "1234"                        // Passwort für den OTA (Over the Air) Update
@@ -45,22 +45,23 @@
 // Test: http://api.openweathermap.org/data/2.5/weather?q=Baden-Baden,de&lang=de&units=metric&appid=<APIKEY>
 #define APIKEY                                          // Zum abschalten von Openweather auskommentieren.
 #define DEFAULTAPIKEY "OpenWeather APIKEY"              // Hier kann dein default APIKEY von openweathermap rein. Die eigentliche APIKey wird in Settings eingestellt.
-#define LOCATION "Baden-Baden,de"                       // Hier kann dein default openweathermap Location rein. Die eigentliche LOCATION wird in Settings eingestellt.
+#define LOCATION "Gunzenhausen,DE"                       // Hier kann dein default openweathermap Location rein. Die eigentliche LOCATION wird in Settings eingestellt.
 //#define LOCATION "Zurich, CH"
 //#define LOCATION "Hong Kong, HK"
 #define OPENWEATHER_PERIODE 1800                        //* wie oft in Sekunden openweather.org aufgerufen wird
 #define OPENWEATHER_MAX_ERROR 20                        //* bei Fehler: wie oft es pro Tag versucht wird bis es aufgegeben wird
 
 #define SunRiseLib                                      // falls kein API Key vorhanden ist kann Sonnenaufgang/Sonnenuntergang über die Lib SunRise.h berechnet werden.
-#define LONGITUDE 8.244                                 // Die RunRise Lib ist in der Bibliotheksverwaltung zu finden.
-#define LATITUDE 48.766                                 // Dafür wird der Standort benötigt. Kann z.B. über google maps erfolgen. Die eigentliche Standort wird in Settings eingestellt.
+#define LONGITUDE 10.769                                 // Die RunRise Lib ist in der Bibliotheksverwaltung zu finden.
+#define LATITUDE 49.105                                 // Dafür wird der Standort benötigt. Kann z.B. über google maps erfolgen. Die eigentliche Standort wird in Settings eingestellt.
 
 // SunRise/SunSet Animationen
 #define ANI_SUNRISE "SUNRISE"                           // Name der Sonnenaufgangsanimation
 #define ANI_SUNSET "SUNSET"                             // Name der Sonnenuntergangsanimation
 
 //#define FRONTCOVER_EN
-#define FRONTCOVER_DE_DE
+//#define FRONTCOVER_DE_DE
+#define FRONTCOVER_DE_BY
 //#define FRONTCOVER_DE_SW
 //#define FRONTCOVER_DE_BA
 //#define FRONTCOVER_DE_SA
@@ -121,7 +122,7 @@
 #define SERIAL_SPEED 115200
 
 //#define ONOFF_BUTTON
-#define MODE_BUTTON
+//#define MODE_BUTTON
 //#define SHOW_TIME_BUTTON
 
 
@@ -131,13 +132,13 @@
 #define TEST_BRIGHTNESS 80                           // Helligkeit beim LED Test
 
 // Ist ein BME280 an Board
-#define SENSOR_BME280
+//#define SENSOR_BME280
 #define SEALEVELPRESSURE_HPA (1013.25)               //* Luftdruck auf Meereshöhe
 #define BME_TEMPERATURE_OFFSET -0.1                  // Temperaturkorrektur
 #define BME_HUMIDITY_OFFSET +0.1                     // Luftfeuchtekorrektur
 
 
-#define HOEHE_UEBER_0 130                            // Hier die default Höhe über NN des Wohnortes eintragen.Der eigentliche Wert wird in Settings eingestellt.
+#define HOEHE_UEBER_0 416                            // Hier die default Höhe über NN des Wohnortes eintragen.Der eigentliche Wert wird in Settings eingestellt.
 
 #define LUFTDRUCKMIN 975                             //* Hier den zu erwartenden minimalen Luftdruck eintragen (Baseline im Diagramm)
 //* Parameter für die Berechnung des Luftdrucks auf Meeresniveau:
@@ -157,7 +158,7 @@
 #define RTC_TEMPERATURE_OFFSET -0.1
 
 // Lichtabhängiger Widerstand an Board?
-#define LDR
+//#define LDR
 //#define LDR_IS_INVERSE                      // Falls LDR Wert gegen Masse angeschlossen wurde
 #define MIN_LDR_STARTVALUE 30                 // LDR Startwert bei Dunkelheit (1-1023) (Wert siehe Infoseite)
 #define MAX_LDR_STARTVALUE 100                // LDR Startwert bei Tageslicht (1-1023) (Wert muss größer als MIN_LDR_STARTVALUE sein!)
@@ -168,13 +169,13 @@
 //#define BUZZTIME_TIMER 10
 
 // MP3 Spieler vorhanden:
-#define AUDIO_SOUND
+//#define AUDIO_SOUND
 
 #ifdef AUDIO_SOUND
 
 //#define CHECK_MP3                             // prüft jede Stunde zur Random Minute den MP3 Player
 
-#define SINGLEMODE_MIT_SOUND                  // Wenn z.B. der Mond im Webinterface angeklickt wird kommt die Mondanimation mit oder ohne Ansage 
+#define SINGLEMODE_MIT_SOUND                  // Wenn z.B. der Mond im Webinterface angeklickt wird kommt die Mondanimation mit oder ohne Ansage
 
 #define STARTUPSOUNDLEVEL 30                  // Startlautstärke 1-100
 #define AUDIO_EQUALIZER DFPLAYER_EQ_NORMAL    // Einstellungen Equalizer: DFPLAYER_EQ_NORMAL,DFPLAYER_EQ_POP,DFPLAYER_EQ_ROCK,DFPLAYER_EQ_JAZZ,DFPLAYER_EQ_CLASSIC,DFPLAYER_EQ_BASS
@@ -322,13 +323,14 @@
 //###################################################################
 
 
-#define NUMPIXELS 115                       // mit Alarm LED
-//#define NUMPIXELS 114                       // ohne Alarm LED
+//#define NUMPIXELS 115                       // mit Alarm LED
+#define NUMPIXELS 114                       // ohne Alarm LED
 
 // Das LED Layout (Siehe in LedDriver.cpp):
+#define LED_LAYOUT_HORIZONTAL_0
 //#define LED_LAYOUT_HORIZONTAL_1
 //#define LED_LAYOUT_HORIZONTAL_2         // B
-#define LED_LAYOUT_HORIZONTAL_3          // C (260x260)
+//#define LED_LAYOUT_HORIZONTAL_3          // C (260x260)
 //#define LED_LAYOUT_VERTICAL_1
 //#define LED_LAYOUT_VERTICAL_2
 //#define LED_LAYOUT_VERTICAL_3           // A (390x390)
@@ -408,7 +410,7 @@
 #define PIN_AUDIO_BUSY   D0     // D0      D0,16              kein Interrupt!
 //#define PIN_BUZZER       D4     //
 //#define PIN_LEDS_CLOCK   D6     //       D6,12              wird für LPD8806RGBW benötigt D6
-#define PIN_LEDS_DATA    D8     // D8      D8,Data            (z.B. WS2812B)
+#define PIN_LEDS_DATA    D1     // D8      D8,Data            (z.B. WS2812B)
 #define PIN_LDR          A0     // A0      A0,LDR             ADC
 #define PIN_SHOW_TIME_BUTTON RX //         RX,time
 #define PIN_ONOFF_BUTTON TX     //         TX,on/off

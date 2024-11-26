@@ -16,10 +16,10 @@ void Renderer::setTime(uint8_t hours, uint8_t minutes, uint16_t matrix[])
 //########################################################################################################################
 // DEUTSCH
 //########################################################################################################################
-#if defined(FRONTCOVER_DE_DE) || defined(FRONTCOVER_DE_SW) || defined(FRONTCOVER_DE_BA) || defined(FRONTCOVER_DE_SA)
-		DE_ESIST;
-    if (settings.mySettings.itIs) 
-    { 
+#if defined(FRONTCOVER_DE_BY) || defined(FRONTCOVER_DE_DE) || defined(FRONTCOVER_DE_SW) || defined(FRONTCOVER_DE_BA) || defined(FRONTCOVER_DE_SA)
+    DE_ESIST;
+    if (settings.mySettings.itIs)
+    {
       WEB_Uhrtext = F("Es ist ");
     }
     else 
@@ -49,7 +49,7 @@ void Renderer::setTime(uint8_t hours, uint8_t minutes, uint16_t matrix[])
 			break;
 		case 3:
 			// viertel nach
-#if defined(FRONTCOVER_DE_SW) || defined(FRONTCOVER_DE_SA)
+#if defined(FRONTCOVER_DE_BY) || defined(FRONTCOVER_DE_SW) || defined(FRONTCOVER_DE_SA)
 				DE_VIERTEL;
         WEB_Uhrtext += F("viertel ");
 				setHours(hours + 1, false, matrix);
@@ -62,7 +62,7 @@ void Renderer::setTime(uint8_t hours, uint8_t minutes, uint16_t matrix[])
 			break;
 		case 4:
 			// 20 nach
-#if defined(FRONTCOVER_DE_SA)
+#if defined(FRONTCOVER_DE_BY) || defined(FRONTCOVER_DE_SA)
 				DE_ZEHN;
 				DE_VOR;
 				DE_HALB;
@@ -99,7 +99,7 @@ void Renderer::setTime(uint8_t hours, uint8_t minutes, uint16_t matrix[])
 			break;
 		case 8:
 			// 20 vor
-#if defined(FRONTCOVER_DE_SA)
+#if defined(FRONTCOVER_DE_BY) || defined(FRONTCOVER_DE_SA)
 				DE_ZEHN;
 				DE_NACH;
 				DE_HALB;
@@ -114,7 +114,7 @@ void Renderer::setTime(uint8_t hours, uint8_t minutes, uint16_t matrix[])
 			break;
 		case 9:
 			// viertel vor
-#if defined(FRONTCOVER_DE_SW) || defined(FRONTCOVER_DE_BA) || defined(FRONTCOVER_DE_SA)
+#if defined(FRONTCOVER_DE_BY) || defined(FRONTCOVER_DE_SW) || defined(FRONTCOVER_DE_BA) || defined(FRONTCOVER_DE_SA)
 				DE_DREIVIERTEL;
         WEB_Uhrtext += F("dreiviertel ");
 				setHours(hours + 1, false, matrix);
@@ -1248,8 +1248,8 @@ void Renderer::setHours(uint8_t hours, boolean glatt, uint16_t matrix[])
 
 //########################################################################################################################
 // DEUTSCH
-//########################################################################################################################  
-#if defined(FRONTCOVER_DE_DE) || defined(FRONTCOVER_DE_SW) || defined(FRONTCOVER_DE_BA) || defined(FRONTCOVER_DE_SA)
+//########################################################################################################################
+#if defined(FRONTCOVER_DE_BY) || defined(FRONTCOVER_DE_DE) || defined(FRONTCOVER_DE_SW) || defined(FRONTCOVER_DE_BA) || defined(FRONTCOVER_DE_SA)
 		if (glatt)
 			DE_UHR;
 		switch (hours)
@@ -2006,6 +2006,9 @@ void Renderer::clearEntryWords(uint16_t matrix[])
 {
 #if defined(FRONTCOVER_DE_DE) || defined(FRONTCOVER_DE_SW) || defined(FRONTCOVER_DE_BA) || defined(FRONTCOVER_DE_SA)
 		matrix[0] &= 0b0010001111111111; // remove ES IST
+#endif
+#if defined(FRONTCOVER_DE_BY)
+		matrix[0] &= 0b0001001111111111; // remove ETZ IS
 #endif
 #if defined(FRONTCOVER_DE_MKF_DE) || defined(FRONTCOVER_DE_MKF_SW) || defined(FRONTCOVER_DE_MKF_BA) || defined(FRONTCOVER_DE_MKF_SA)
 		matrix[0] &= 0b0010001111111111; // remove ES IST
